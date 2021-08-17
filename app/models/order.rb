@@ -21,6 +21,7 @@ class Order < ApplicationRecord
                 OrderSetting.first
               end
     self.order_number = OrderSetting.first.last_number + 1
+    self.save
     setting.update!(last_number: self.order_number)
   end
 
