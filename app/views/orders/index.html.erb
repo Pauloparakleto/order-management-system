@@ -1,0 +1,15 @@
+<h1>Order list</h1>
+<section>
+  <table>
+    <tr>
+      <th>Number</th>
+      <th>Status</th>
+    </tr>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.order_number %></td>
+        <td><%= order.status %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
