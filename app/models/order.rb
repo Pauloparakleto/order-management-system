@@ -2,6 +2,9 @@ class Order < ApplicationRecord
 
   enum status: { pending: 0, in_progress: 1, completed: 2 }
 
+  validates :product_name, presence: { message: "Forneça um nome" }
+  validates :price, presence: { message: "Forneça um preço" }
+
   after_create :check_status
 
   after_create :set_order_number
