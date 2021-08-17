@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
+
+  context "when increment" do
+    it '1' do
+      order = Order.create
+      expect(order.order_number).to eq(1)
+    end
+
+    it '2' do
+      Order.create
+      order_second = Order.create
+      expect(order_second.order_number).to eq(2)
+    end
+  end
+
   context "when create" do
     it 'valid' do
       order = Order.create(order_number: 1)
