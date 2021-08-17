@@ -21,6 +21,28 @@ RSpec.describe Order, type: :model do
       expect(order).to be_truthy
     end
 
+    it 'has name' do
+      order = Order.create(product_name: "PS3")
+      expect(order.product_name).to eq("PS3")
+    end
+
+    it 'has price' do
+      order = Order.create(product_name: "PS3", price: 897.98)
+      expect(order.price).to eq(897.98)
+    end
+
+    it 'has no price' do
+      order = Order.create(product_name: "PS3")
+      expect(order.errors.any?).to eq(true)
+      expect(order.errors[:base].pluck(:message)).to eq(["Forneça um preço"])
+    end
+
+    it 'has no product name' do
+      order = Order.create(price: 9.99)
+      expect(order.errors.any?).to eq(true)
+      expect(order.errors[:base].pluck(:message)).to eq(["Forneça um nome"])
+    end
+
     it 'status pending' do
       order = Order.create(order_number: 1, status: :pending)
       expect(order.status).to eq("pending")
