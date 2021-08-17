@@ -1,0 +1,22 @@
+<h1>Order list</h1>
+<section>
+  <h2>
+    <%= link_to "Create", new_order_path %>
+  </h2>
+  <table>
+    <tr>
+      <th>Number</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Status</th>
+    </tr>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.order_number %></td>
+        <td><%= link_to order.product_name, order_path(order) %></td>
+        <td><%= order.price %></td>
+        <td><%= order.status %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
