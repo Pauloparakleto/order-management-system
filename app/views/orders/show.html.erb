@@ -3,3 +3,4 @@
 <h2>Price: <%= @order.price %></h2>
 <h2>Status: <%= @order.status %></h2>
 <h3> <%= link_to "Order List", orders_path %></h3>
+<h3> <%= link_to "Update Order", edit_order_path(@order) %></h3>
