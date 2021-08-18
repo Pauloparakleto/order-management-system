@@ -1,0 +1,25 @@
+<%= form_with model: @order do |form| %>
+  <div>
+    <%= form.label :product_name %><br>
+    <%= form.text_field :product_name %>
+  </div>
+
+  <div>
+    <%= form.label :price %><br>
+    <%= form.number_field :price, value: number_to_currency(@order.price.to_f, delimiter: '', unit: ''), step: :any %>
+  </div>
+
+  <div>
+    <%= form.label :status %>
+    <%= form.select(:status, options_for_select([['Pending', 'pending']])) if @order.new_record?  %>
+    <%= form.select(:status, options_for_select([['Keep pending', 'pending'], ['To in Progress', 'in_progress']])) if @order.pending? && !@order.new_record?  %>
+    <%= form.select(:status, options_for_select([['Keep in Progress', 'in_progress'], ['To Complete', 'completed']])) if @order.in_progress? && !@order.new_record?  %>
+    <%= form.select(:status, options_for_select([['Keep Complete', 'completed']])) if @order.completed? && !@order.new_record? %><br>
+  </div>
+  <div>
+    <%= form.submit "Update" if !@order.new_record? %>
+    <%= form.submit "Create" if @order.new_record? %>
+  </div>
+  <br>
+  <%= link_to "Voltar à Lista", orders_path %>
+<% end %>

@@ -1,4 +1,19 @@
 <h1>Order list</h1>
+<%= search_form_for @q do |f| %>
+  <section>
+    <p>Search status: 0 for pending, 1 for in progress and 2 for completed</p>
+    <%= f.label :status_eq %>
+    <%= f.search_field :status_eq %>
+  </section>
+  <br>
+  <section>
+    <%= f.label :order_number_eq %>
+    <%= f.search_field :order_number_eq %>
+  </section>
+
+  <%= f.submit %>
+<% end %>
+
 <section>
   <h2>
     <%= link_to "Create", new_order_path %>
