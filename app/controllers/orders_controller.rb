@@ -14,9 +14,11 @@ class OrdersController < ApplicationController
   def create
     @order = Order.create(order_params)
     if @order.valid?
+      flash[:notice] = "Order created!"
       redirect_to orders_path(@order)
     else
-      render new_order_path
+      flash[:alert] = @order.errors.full_messages
+      redirect_to new_order_path
     end
   end
 
