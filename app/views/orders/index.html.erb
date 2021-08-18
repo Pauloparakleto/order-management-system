@@ -1,6 +1,7 @@
 <h1>Order list</h1>
 <%= search_form_for @q do |f| %>
   <section>
+    <p>Search status: 0 for pending, 1 for in progress and 2 for completed</p>
     <%= f.label :status_eq %>
     <%= f.search_field :status_eq %>
   </section>
