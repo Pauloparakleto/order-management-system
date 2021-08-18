@@ -33,7 +33,7 @@ class Order < ApplicationRecord
       errors.add(:base, message: 'Não é possível voltar order em progresso novamente para pendente!')
     end
 
-    if Order.find(self.id).completed?
+    if Order.find(self.id).completed? && !self.completed?
       errors.add(:base, message: 'Não é possível alterar uma ordem já completa!')
     end
 
