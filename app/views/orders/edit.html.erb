@@ -1,30 +1,7 @@
 <h1>Edit Order</h1>
-
-<%= form_with model: @order do |form| %>
-  <div>
-    <%= form.label :product_name %><br>
-    <%= form.text_field :product_name %>
-  </div>
-
-  <div>
-    <%= form.label :price %><br>
-      <%= form.number_field :price %>
-  </div>
-
-  <div>
-    <p>
-      Status: <%= @order.status %>
-    </p>
-  </div>
-
-  <div>
-    <%= form.select(:status, options_for_select([['Keep pending', 'pending'], ['To in Progress', 'in_progress']])) if @order.pending?  %><br>
-    <%= form.select(:status, options_for_select([['Keep in Progress', 'in_progress'], ['To Complete', 'completed']])) if @order.in_progress?  %><br>
-    <%= form.select(:status, options_for_select([['Keep Complete', 'completed']])) if @order.completed?  %><br>
-  </div>
-  <div>
-    <%= form.submit "Update" %>
-  </div>
-  <br>
-  <%= link_to "Voltar à Lista", orders_path %>
-<% end %>
+<div>
+  <p>
+    Status: <%= @order.status %>
+  </p>
+</div>
+<%= render 'orders/submit' %>
