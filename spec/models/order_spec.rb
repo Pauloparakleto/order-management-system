@@ -35,10 +35,36 @@ RSpec.describe Order, type: :model do
       expect(order.price).to eq(897.98)
     end
 
+    it 'has negative price' do
+      order = Order.create(product_name: "PS5", price: -11.98)
+      expect(order.errors.any?).to eq(true)
+      expect(order.errors.full_messages).to eq(["Price must be greater than 0"])
+    end
+
+    it 'has negative price update' do
+      order = Order.create(product_name: "PS5", price: 11.98)
+      order.update(price: -11.98)
+      expect(order.errors.any?).to eq(true)
+      expect(order.errors.full_messages).to eq(["Price must be greater than 0"])
+    end
+
+    it 'has price string' do
+      order = Order.create(product_name: "PS5", price: 'abc')
+      expect(order.errors.any?).to eq(true)
+      expect(order.errors.full_messages).to eq(["Price is not a number"])
+    end
+
+    it 'has price string update' do
+      order = Order.create(product_name: "PS5", price: 11.98)
+      order.update(price: 'cda')
+      expect(order.errors.any?).to eq(true)
+      expect(order.errors.full_messages).to eq(["Price is not a number"])
+    end
+
     it 'has no price' do
       order = Order.create(product_name: "PS3")
       expect(order.errors.any?).to eq(true)
-      expect(order.errors.full_messages).to eq(["Price Forneça um preço"])
+      expect(order.errors.full_messages.first).to eq("Price Forneça um preço")
     end
 
     it 'has no product name' do
