@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>OrderManegementSystem</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>OrderManegementSystem</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            max-width: 400px;
-            min-width: 500px;
-            width: 70%;
-            display: block;
-            margin: auto;
-        }
+  <style>
+      table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          max-width: 400px;
+          min-width: 500px;
+          width: 70%;
+          display: block;
+          margin: auto;
+      }
 
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+      }
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
-    </style>
-  </head>
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+  </style>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<section>
+  <% if flash[:alert] %>
+    <h2>
+      <% flash[:alert].each do |message| %></h2>
+        <h2><%= message %></h2>
+      <% end %>
+  <% end %>
+  <% if flash[:notice] %>
+    <h2> <%= flash[:notice] %></h2>
+  <% end %>
+</section>
+<%= yield %>
+</body>
 </html>
