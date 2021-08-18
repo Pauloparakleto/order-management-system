@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def index
     @q = Order.ransack(params[:q])
-    @orders = @q.result(distinct: true)
+    @orders = @q.result(distinct: true).order(:order_number)
   end
 
   def show
