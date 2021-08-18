@@ -4,6 +4,7 @@ class Order < ApplicationRecord
 
   validates :product_name, presence: { message: "Forneça um nome" }
   validates :price, presence: { message: "Forneça um preço" }
+  validates :price, :numericality => { :greater_than => 0 }
 
   after_create :check_status
 
