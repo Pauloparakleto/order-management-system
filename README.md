@@ -36,10 +36,10 @@ PS 3: We’ll evaluate everything from the git history to the implemented code.
 
 ## Clone it
 
-1. Using SSH: `git clone git@github.com:Pauloparakleto/hiring.git`
+1. Using SSH: `git clone git@github.com:Pauloparakleto/order-management-system.git`
 
 
-2. Using HTTPS: `git clone https://github.com/Pauloparakleto/hiring.git`
+2. Using HTTPS: `git clone https://github.com/Pauloparakleto/order-management-system.git`
 
 ## Bundle it
 
